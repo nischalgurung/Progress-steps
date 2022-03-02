@@ -1,11 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
+:root {
+  --active-colour: rgb(255, 108, 10);
+  --inactive-colour: rgb(168, 168, 168);
+}
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,4 +17,69 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0;
+}
+.container {
+  text-align: center;
+}
+.progress-container {
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 400px;
+}
+.progress {
+  background-color: var(--active-colour);
+  z-index: -1;
+  top: 50%;
+  left: 0;
+  position: absolute;
+  height: 4px;
+  width: 0%;
+  transform: translateY(-50%);
+  transition: 0.5s ease;
+}
+.progress-container::before {
+  content: "";
+  background-color: var(--inactive-colour);
+  z-index: -1;
+  top: 50%;
+  left: 0;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  transform: translateY(-50%);
+}
+.steps.active {
+  border: 4px solid var(--active-colour);
+  transition: 0.2s ease 0.3s;
+}
+.btn {
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: var(--active-colour);
+  border: 0;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 5px 20px;
+  border-radius: 6px;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: var(--inactive-colour);
+}
+.steps {
+  background-color: #fff;
+  border: 4px solid var(--inactive-colour);
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
